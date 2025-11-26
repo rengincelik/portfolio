@@ -3,50 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kişisel Web Sayfam</title>
+    <title>Minimalist Portfolyo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="light-mode">
-    <header class="main-header">
-        <nav class="nav-links">
-            <button class="nav-item" data-section-id="home">Anasayfa</button>
-            <button class="nav-item" data-section-id="about">Hakkımda</button>
-            <button class="nav-item" data-section-id="projects">Projeler</button>
-            <button class="nav-item" data-section-id="contact">İletişim</button>
-        </nav>
-        <div class="header-controls">
-            <button id="theme-toggle" class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </button>
+<body>
+
+    <header class="nav-header">
+        <div class="nav-links">
+            <a href="#hakkinda" class="nav-button active" data-target="hakkinda">Hakkımda</a>
+            <a href="#projeler" class="nav-button" data-target="projeler">Projeler</a>
+            <a href="#deneyim" class="nav-button" data-target="deneyim">Deneyim</a>
+            <a href="#iletisim" class="nav-button" data-target="iletisim">İletişim</a>
         </div>
+        
+        <button id="theme-toggle" aria-label="Temayı Değiştir">☀️</button>
     </header>
 
-    <main class="slider-container">
-        <section id="home" class="slide-section">
-            <h1>Merhaba, Ben [Adın]</h1>
-            <p>Web geliştirme tutkunu bir bireyim. Bu benim kişisel web sayfam!</p>
-            <p>Daha fazlasını görmek için yana kaydırın veya yukarıdaki menüyü kullanın.</p>
+    <button class="scroll-arrow left-arrow" aria-label="Sola Kaydır">←</button>
+    <button class="scroll-arrow right-arrow" aria-label="Sağa Kaydır">→</button>
+
+    <main class="slider-wrapper" id="slider-wrapper">
+        
+        <section id="hakkinda" class="slide-section section-1">
+            <h1>Hakkımda</h1>
+            <p>Buraya kendini anlatan uzun bir metin gelecek.</p>
         </section>
 
-        <section id="about" class="slide-section">
-            <h2>Hakkımda</h2>
-            <p>Burası kendinizi tanıtabileceğiniz bir bölüm. Deneyimlerinizden, yeteneklerinizden ve ilgi alanlarınızdan bahsedin.</p>
-            <p>Örnek: "Yazılım mühendisliği alanında X yıllık tecrübeye sahibim..."</p>
+        <section id="projeler" class="slide-section section-2">
+            <h1>Projeler</h1>
+            <p>Buraya en iyi 3 projenin detayları ve görselleri gelecek.</p>
         </section>
 
-        <section id="projects" class="slide-section">
-            <h2>Projelerim</h2>
-            <p>Yaptığınız projeleri burada sergileyebilirsiniz. Her bir proje için kısa bir açıklama ve linkler ekleyebilirsiniz.</p>
-            <p>Örnek: "Proje Adı 1 - Açıklama ve Teknoloji"</p>
+        <section id="deneyim" class="slide-section section-3">
+            <h1>Deneyim</h1>
+            <p>Buraya iş ve eğitim deneyimi bilgileri gelecek.</p>
         </section>
 
-        <section id="contact" class="slide-section">
-            <h2>İletişim</h2>
-            <p>Bana ulaşabileceğiniz iletişim bilgilerini buraya ekleyin.</p>
-            <p>E-posta: your@email.com</p>
-            <p>LinkedIn: linkedin.com/in/yourprofile</p>
+        <section id="iletisim" class="slide-section section-4">
+            <h1>İletişim</h1>
+            <p>Buraya form veya iletişim bilgileri gelecek.</p>
         </section>
+        
     </main>
 
-    <button class="scroll
+    <script src="script.js"></script>
+</body>
+</html>
