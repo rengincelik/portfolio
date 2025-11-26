@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minimalist Portfolyo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
@@ -25,23 +25,63 @@
     <main class="slider-wrapper" id="slider-wrapper">
         
         <section id="hakkinda" class="slide-section section-1">
-            <h1>Hakkımda</h1>
-            <p>Buraya kendini anlatan uzun bir metin gelecek.</p>
+            <div class="main-content">
+                <h1>Merhaba, ben [ADINIZ SOYADINIZ]</h1>
+                <p>Kısaca kendimi tanıtmak gerekirse, web teknolojileri üzerine çalışan, minimalist tasarımları seven bir geliştiriciyim.</p>
+                <button class="detail-toggle-btn" data-detail-target="hakkinda-detail">
+                    Beni Daha Yakından Tanıyın →
+                </button>
+            </div>
+            <div class="detail-view" id="hakkinda-detail">
+                <h2>Biyografi ve Felsefe</h2>
+                <p>Detaylı biyografiniz, hayat felsefeniz ve hobileriniz bu kısımda yer alacak.</p>
+                <button class="return-btn">← Ana Konuya Geri Dön</button>
+            </div>
         </section>
 
         <section id="projeler" class="slide-section section-2">
-            <h1>Projeler</h1>
-            <p>Buraya en iyi 3 projenin detayları ve görselleri gelecek.</p>
+            <div class="main-content">
+                <h1>Öne Çıkan Projelerim</h1>
+                <p>En son ve en çok gurur duyduğum projelerimin özetleri burada. Daha fazlası için detay sayfasına göz atın!</p>
+                <button class="detail-toggle-btn" data-detail-target="projeler-detail">
+                    Tüm Projeleri İncele →
+                </button>
+            </div>
+            <div class="detail-view" id="projeler-detail">
+                <h2>Detaylı Proje Listesi</h2>
+                <p>Buraya kartlar, resimler ve linklerle dolu, tüm projelerinizin yer aldığı bir liste eklenecek.</p>
+                <button class="return-btn">← Ana Konuya Geri Dön</button>
+            </div>
         </section>
 
         <section id="deneyim" class="slide-section section-3">
-            <h1>Deneyim</h1>
-            <p>Buraya iş ve eğitim deneyimi bilgileri gelecek.</p>
+            <div class="main-content">
+                <h1>İş ve Eğitim Deneyimi</h1>
+                <p>Kariyer yolculuğumdaki önemli duraklar ve edindiğim beceriler. Bir özet görmek için tıklayın.</p>
+                <button class="detail-toggle-btn" data-detail-target="deneyim-detail">
+                    Özgeçmişin Tamamını Gör →
+                </button>
+            </div>
+            <div class="detail-view" id="deneyim-detail">
+                <h2>Özgeçmiş (CV) Detayları</h2>
+                <p>Bu alanda bir zaman çizelgesi (timeline) veya resmi özgeçmişinizin daha detaylı bir sunumu yer alabilir.</p>
+                <button class="return-btn">← Ana Konuya Geri Dön</button>
+            </div>
         </section>
 
         <section id="iletisim" class="slide-section section-4">
-            <h1>İletişim</h1>
-            <p>Buraya form veya iletişim bilgileri gelecek.</p>
+            <div class="main-content">
+                <h1>Benimle İletişime Geçin</h1>
+                <p>Bana ulaşmanın en hızlı yolları ve sosyal medya hesaplarım.</p>
+                <button class="detail-toggle-btn" data-detail-target="iletisim-detail">
+                    İletişim Formunu Aç →
+                </button>
+            </div>
+            <div class="detail-view" id="iletisim-detail">
+                <h2>İletişim Formu</h2>
+                <p>Buraya e-posta, isim gibi alanları olan bir **HTML Formu** yerleştirebilirsin.</p>
+                <button class="return-btn">← Ana Konuya Geri Dön</button>
+            </div>
         </section>
         
     </main>
