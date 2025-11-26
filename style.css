@@ -1,18 +1,31 @@
 /* ======================== */
 /* 1. TEMA DEĞİŞKENLERİ */
 /* ======================== */
+/* NOT: Tema değiştirme fonksiyonunu korumak için, 
+   CYBERPUNK stilini .dark-mode sınıfına yüklüyoruz.
+   Başlangıçta bu görünümle başlamak için HTML'deki <body> etiketine 
+   default olarak 'dark-mode' sınıfını eklemeyi unutmayın. */
+
 :root {
+  /* LIGHT MODE (Varsayılan/Yedek) */
   --color-bg: #ffffff;
   --color-text: #333333;
-  --color-primary: #007bff; /* Vurgu Rengi */
+  --color-primary: #007bff; /* Standard Vurgu Mavi */
   --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-section-bg: #ffffff;
+  --color-header-bg: #f8f8f8;
+  --color-border: #eee;
 }
 
 .dark-mode {
-  --color-bg: #1c1c1c;
-  --color-text: #f0f0f0;
-  --color-primary: #9dceff;
-  --color-shadow: rgba(255, 255, 255, 0.1);
+  /* CYBERPUNK / NEON DARK MODE */
+  --color-bg: #0a0a0a;
+  --color-text: #e0e0e0;
+  --color-primary: #00d4ff; /* Neon Mavi Vurgu */
+  --color-shadow: 0 0 10px rgba(0, 212, 255, 0.5); /* Neon Gölge */
+  --color-section-bg: #151515;
+  --color-header-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --color-border: #252525;
 }
 
 /* ======================== */
@@ -25,9 +38,10 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text);
+  line-height: 1.6;
   overflow: hidden; /* Dikey kaydırmayı tamamen engeller */
   height: 100vh;
   transition: background-color 0.4s, color 0.4s;
@@ -37,45 +51,60 @@ body {
 /* 3. SABİT BAŞLIK (HEADER) */
 /* ======================== */
 .nav-header {
-  position: fixed; /* Sayfanın en üstünde sabit kalır */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 15px 30px;
   display: flex;
-  justify-content: center; /* Butonları ortaya toplar */
+  justify-content: center;
   align-items: center;
   gap: 20px;
-  z-index: 1000; /* Diğer her şeyin üstünde görünür */
-  background-color: var(--color-bg);
-  box-shadow: 0 2px 4px var(--color-shadow);
+  z-index: 1000;
+  
+  /* NEON HEADER STİLLERİ */
+  background: var(--color-header-bg);
+  border-bottom: 2px solid var(--color-primary);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 .nav-header .nav-button {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-primary); /* Vurgu Rengi */
   font-size: 16px;
   padding: 8px 15px;
   border-bottom: 3px solid transparent;
   transition: all 0.3s;
 }
 
+.nav-header .nav-button:hover {
+  background: rgba(0, 212, 255, 0.1);
+  transform: translateY(-2px);
+}
+
 .nav-header .nav-button.active {
   color: var(--color-primary);
-  border-bottom-color: var(--color-primary); /* Vurgu */
+  border-bottom-color: var(--color-primary);
+  background: rgba(0, 212, 255, 0.2);
   font-weight: 600;
 }
 
 /* Tema Değiştirici Buton Stili */
 #theme-toggle {
   background: none;
-  border: 1px solid var(--color-text);
-  color: var(--color-text);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   position: absolute;
   right: 30px;
+  transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 /* ======================== */
@@ -85,70 +114,138 @@ body {
   display: flex;
   width: 100%;
   height: 100vh;
-  overflow-x: scroll; /* Yatay kaydırmayı etkinleştirir */
-  overflow-y: hidden; 
-  scroll-snap-type: x mandatory; /* Tam ekrana otomatik oturma */
-  scroll-behavior: smooth; /* JS veya oklarla kaydırırken yumuşak geçiş */
-  padding-top: 70px; /* Sabit başlığın altından başlar */
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-top: 70px;
 }
 
 .slide-section {
-  flex: 0 0 100vw; /* Her bölümün ekran genişliğinde olmasını zorlar */
-  scroll-snap-align: start; /* Kaydırma başlangıcını hizala */
+  flex: 0 0 100vw;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* İçeriği dikeyde ortalar */
-  align-items: center; /* İçeriği yatayda ortalar */
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 0 5vw;
 }
-/* Mevcut slider-wrapper ve slide-section kodlarının altına ekleyin/değiştirin */
 
-/* Her iki içerik bloğu da (main ve detail) tam alanı kaplamalı */
+/* ======================== */
+/* 5. İÇERİK ve DETAY GÖRÜNÜMÜ STİLİ */
+/* (Syllabus görünümü ve Detay geçişi için) */
+/* ======================== */
+
+/* Her iki içerik bloğu da tam alanı kaplamalı */
 .main-content,
 .detail-view {
     width: 100%;
+    max-width: 800px;
     height: 100%;
+    background: var(--color-section-bg);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: opacity 0.4s, transform 0.4s;
-    /* Fazla içeriği kesmek için */
-    overflow: hidden; 
+    transition: all 0.3s;
+    /* Neon Dark Stili */
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.05); 
 }
 
-/* Ana İçerik: Daha küçük, daha özlü başlıklar */
-.main-content h1 {
-    font-size: 2.5rem; /* Başlık boyutunu sabit tutun */
-    margin-bottom: 0.5em;
+/* Bölüm üzerine gelince (hover) neon border/glow efekti */
+.slide-section:hover .main-content {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
 }
-.main-content p {
+
+/* Başlıklar */
+.main-content h1, .detail-view h2 {
+    font-size: 2.5em;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    /* Başlıkta Neon Glow efekti */
+    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* Alt Metinler (Syllabus Görünümü) */
+.main-content p, .detail-view p {
     max-width: 600px;
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2em;
 }
+
+/* BUTONLAR (Detail Toggle ve Return) */
+.detail-toggle-btn, .return-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: var(--color-primary);
+    color: var(--color-dark-bg);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    /* Buton Neon Işıltı */
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5); 
+}
+
+.detail-toggle-btn:hover, .return-btn:hover {
+    background-color: #00b4e0;
+    transform: translateY(-1px);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+}
+
+/* Görünürlük Mantığı */
+.slide-section .detail-view {
+    display: none; 
+    animation: fadeIn 0.5s ease; /* Fade-in animasyonu korundu */
+}
+
+.slide-section.show-detail .main-content {
+    display: none;
+}
+
+.slide-section.show-detail .detail-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* ======================== */
-/* 5. KAYDIRMA OKLARI */
+/* 6. KAYDIRMA OKLARI */
 /* ======================== */
 .scroll-arrow {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   z-index: 900;
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-text);
-  color: var(--color-text);
-  padding: 10px;
+  background-color: rgba(26, 26, 46, 0.8);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 15px 10px;
   cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.3s;
+  opacity: 0.6;
+  transition: all 0.3s;
+  border-radius: 4px;
 }
 
 .scroll-arrow:hover {
   opacity: 1;
+  background-color: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
 .left-arrow {
@@ -157,44 +254,4 @@ body {
 
 .right-arrow {
   right: 10px;
-}
-/* Ana içerik ve Detay görünümünü yönetme */
-.slide-section .detail-view {
-    display: none; /* Detaylar varsayılan olarak gizli */
-    animation: fadeIn 0.5s ease;
-}
-
-/* Eğer bölümün kendisinde 'show-detail' sınıfı varsa: */
-.slide-section.show-detail .main-content {
-    display: none; /* Ana içeriği gizle */
-}
-
-.slide-section.show-detail .detail-view {
-    display: flex; /* Detay içeriğini göster (ve ortala) */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Butonlara ve linklere biraz stil ekleyelim */
-.detail-toggle-btn, .return-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: var(--color-primary);
-    color: var(--color-bg);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.detail-toggle-btn:hover, .return-btn:hover {
-    filter: brightness(1.2);
-}
-
-/* Basit bir fade-in animasyonu (isteğe bağlı) */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
