@@ -131,3 +131,43 @@ body {
 .right-arrow {
   right: 10px;
 }
+/* Ana içerik ve Detay görünümünü yönetme */
+.slide-section .detail-view {
+    display: none; /* Detaylar varsayılan olarak gizli */
+    animation: fadeIn 0.5s ease;
+}
+
+/* Eğer bölümün kendisinde 'show-detail' sınıfı varsa: */
+.slide-section.show-detail .main-content {
+    display: none; /* Ana içeriği gizle */
+}
+
+.slide-section.show-detail .detail-view {
+    display: flex; /* Detay içeriğini göster (ve ortala) */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Butonlara ve linklere biraz stil ekleyelim */
+.detail-toggle-btn, .return-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.detail-toggle-btn:hover, .return-btn:hover {
+    filter: brightness(1.2);
+}
+
+/* Basit bir fade-in animasyonu (isteğe bağlı) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
