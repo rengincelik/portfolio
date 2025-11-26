@@ -80,3 +80,34 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(section => {
     observer.observe(section);
 });
+// ... (Mevcut JS kodlarınız buraya gelecek) ...
+
+/* ======================== */
+/* 5. İÇERİK DETAY GÖRÜNÜMÜ MANTIĞI (Drill-Down) */
+/* ======================== */
+
+// 5a. Detay Görünümünü Açma
+document.querySelectorAll('.detail-toggle-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        // Tıklanan butondan en yakın .slide-section'ı bul
+        const parentSection = this.closest('.slide-section');
+        
+        // Bu bölüme 'show-detail' sınıfını ekle
+        if (parentSection) {
+            parentSection.classList.add('show-detail');
+        }
+    });
+});
+
+// 5b. Ana İçeriğe Geri Dönme
+document.querySelectorAll('.return-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        // Tıklanan butondan en yakın .slide-section'ı bul
+        const parentSection = this.closest('.slide-section');
+        
+        // Bu bölümdeki 'show-detail' sınıfını kaldır
+        if (parentSection) {
+            parentSection.classList.remove('show-detail');
+        }
+    });
+});
