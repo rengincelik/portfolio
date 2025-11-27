@@ -13,12 +13,59 @@
         <div class="nav-links">
             <a href="#about-me" class="nav-button" data-target="about-me">About</a>
 
-            <div class="nav-dropdown-container">
+            <!-- MEGA MENU DROPDOWN -->
+            <div class="nav-dropdown-container mega-menu-container">
                 <a href="#projects" class="nav-button" data-target="projects">Projects</a>
-                <div class="nav-dropdown-menu">
-                    <a href="#" data-project-id="gpu-instancing">GPU Instancing</a>
-                    <a href="#" data-project-id="shader-library">Shader Library</a>
-                    <a href="#" data-project-id="mini-dev-kit">Mini Dev Kit</a>
+                <div class="nav-dropdown-menu mega-dropdown-menu">
+                    <!-- GPU Instancing -->
+                    <div class="mega-menu-column">
+                        <div class="mega-menu-title" data-project-id="gpu-instancing">
+                            GPU Instancing ▸
+                        </div>
+                        <div class="mega-menu-items">
+                            <a href="#" data-project-id="gpu-instancing" data-sub-project="gpu-3d">3D GPU Methods</a>
+                            <a href="#" data-project-id="gpu-instancing" data-sub-project="gpu-sprite">GPU Sprite System</a>
+                            <a href="#" data-project-id="gpu-instancing" data-sub-project="grass">Grass Rendering</a>
+                            <a href="#" data-project-id="gpu-instancing" data-sub-project="random-spawn">Random Spawn</a>
+                            <a href="#" data-project-id="gpu-instancing" data-sub-project="scaling">Scaling System</a>
+                        </div>
+                    </div>
+
+                    <!-- Shader Library -->
+                    <div class="mega-menu-column">
+                        <div class="mega-menu-title" data-project-id="shader-library">
+                            Shader Library ▸
+                        </div>
+                        <div class="mega-menu-items">
+                            <a href="#" data-project-id="shader-library" data-sub-project="silk">Silk Shader</a>
+                            <a href="#" data-project-id="shader-library" data-sub-project="velvet">Velvet Shader</a>
+                            <a href="#" data-project-id="shader-library" data-sub-project="water">Water Surface</a>
+                            <a href="#" data-project-id="shader-library" data-sub-project="lit-surface">Advanced Surface</a>
+                        </div>
+                    </div>
+
+                    <!-- Mini Dev Kit -->
+                    <div class="mega-menu-column">
+                        <div class="mega-menu-title" data-project-id="mini-dev-kit">
+                            Mini Dev Kit ▸
+                        </div>
+                        <div class="mega-menu-items">
+                            <a href="#" data-project-id="mini-dev-kit" data-sub-project="3d-player">3D Player Movement</a>
+                            <a href="#" data-project-id="mini-dev-kit" data-sub-project="2d-player">2D Player Movement</a>
+                            <a href="#" data-project-id="mini-dev-kit" data-sub-project="sprite-animator">Sprite Animator</a>
+                            <a href="#" data-project-id="mini-dev-kit" data-sub-project="3d-object">3D Object Movement</a>
+                        </div>
+                    </div>
+
+                    <!-- Games -->
+                    <div class="mega-menu-column">
+                        <div class="mega-menu-title" data-project-id="games">
+                            Games ▸
+                        </div>
+                        <div class="mega-menu-items">
+                            <a href="#" data-project-id="games" data-sub-project="cofu">Cofu</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -35,12 +82,10 @@
             <div class="main-content about-content-area split-layout">
 
                 <div class="info-sidebar">
-
                     <div class="profile-photo">
                         <img src="https://via.placeholder.com/150/00d4ff/0a0a0a?text=Rengin+Celik" alt="Rengin Çelik Profile Photo">
                     </div>
                     <h1>Rengin Çelik</h1>
-
                     <p class="hero-title">Unity Developer & Technical Artist</p>
 
                     <div class="contact-links">
@@ -129,28 +174,27 @@
 
                     <div class="project-card" data-project="shader-library">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff?text=Shader+Library" alt="Shader Library">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/ff6b6b?text=Shader+Library" alt="Shader Library">
                         </div>
                         <h3 class="project-name">Shader Library</h3>
                     </div>
 
                     <div class="project-card" data-project="mini-dev-kit">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff?text=Mini+Dev+Kit" alt="Mini Dev Kit">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/4ecdc4?text=Mini+Dev+Kit" alt="Mini Dev Kit">
                         </div>
                         <h3 class="project-name">Mini Dev Kit</h3>
                     </div>
 
-                    <div class="project-card" data-project="cofu">
+                    <div class="project-card" data-project="games">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/00d4ff?text=Cofu" alt="Cofu">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/95e1d3?text=Games" alt="Games">
                         </div>
-                        <h3 class="project-name">Cofu</h3>
+                        <h3 class="project-name">Games</h3>
                     </div>
                 </div>
             </div>
         </section>
-
 
         <section id="contact" class="slide-section">
             <div class="main-content contact-area">
@@ -164,6 +208,7 @@
         </section>
     </main>
 
+    <!-- Old Modal (Keep for backward compatibility if needed) -->
     <div class="modal" id="project-modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
@@ -179,8 +224,7 @@
                 </div>
                 <div class="modal-tech">
                     <h3>Technologies</h3>
-                    <div class="tech-tags">
-                        </div>
+                    <div class="tech-tags"></div>
                 </div>
                 <div class="modal-links">
                     <a href="#" class="btn github-link" target="_blank">GitHub</a>
@@ -190,205 +234,31 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- NEW Project Popup -->
+    <div class="project-popup" id="project-popup">
+        <div class="popup-overlay"></div>
+        <div class="popup-content">
+            <button class="popup-close" id="popup-close">&times;</button>
 
-<!-- <!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="nav-tabs">
-                <button class="nav-tab active" data-section="about">About</button>
-                <button class="nav-tab" data-section="projects">Projects</button>
+            <div class="popup-header">
+                <h2 class="popup-title" id="popup-title">Project Title</h2>
             </div>
-            <div class="theme-toggle">
-                <input type="checkbox" id="theme-switch" class="theme-switch-input">
-                <label for="theme-switch" class="theme-switch-label">
-                    <span class="theme-switch-inner"></span>
-                    <span class="theme-switch-switch"></span>
-                </label>
+
+            <!-- Tabs -->
+            <div class="popup-tabs" id="popup-tabs">
+                <button class="popup-tab active" data-tab="gpu-instancing">GPU Instancing</button>
+                <button class="popup-tab" data-tab="shader-library">Shader Library</button>
+                <button class="popup-tab" data-tab="mini-dev-kit">Mini Dev Kit</button>
+                <button class="popup-tab" data-tab="games">Games</button>
             </div>
-        </div>
-    </nav>
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- About Section -->
-        <section class="section active" id="about">
-            <div class="section-content">
-                <!-- Hero Card -->
-                <div class="hero-card">
-                    <div class="profile-photo">
-                        <img src="https://via.placeholder.com/150/1a1a1a/ffffff?text=Photo" alt="Profile Photo">
-                    </div>
-                    <h1 class="hero-name">Adın Soyadın</h1>
-                    <p class="hero-title">Full Stack Developer</p>
-                    <div class="social-links">
-                        <a href="https://github.com/username" target="_blank" class="social-icon" data-tooltip="GitHub">
-                            <i data-lucide="github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/username" target="_blank" class="social-icon" data-tooltip="LinkedIn">
-                            <i data-lucide="linkedin"></i>
-                        </a>
-                        <a href="mailto:email@example.com" class="social-icon" data-tooltip="Email">
-                            <i data-lucide="mail"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="about-container">
-                    <!-- About Subsection -->
-                    <div class="about-item" id="about-main">
-                        <button class="accordion-header">
-                            <h2>About Me</h2>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <p>Buraya kendin hakkında bilgi ekleyebilirsin. GitHub projelerin, ilgi alanların ve yeteneklerin hakkında yazabilirsin.</p>
-                        </div>
-                    </div>
-
-                    <!-- Education Subsection -->
-                    <div class="about-item" id="education">
-                        <button class="accordion-header">
-                            <h2>Education</h2>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="education-item">
-                                <h3>Üniversite Adı</h3>
-                                <p class="date">2020 - 2024</p>
-                                <p>Bölüm ve detaylar buraya gelecek.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Experience Subsection -->
-                    <div class="about-item" id="experience">
-                        <button class="accordion-header">
-                            <h2>Experience</h2>
-                            <span class="accordion-icon">+</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="experience-item">
-                                <h3>Pozisyon / Şirket</h3>
-                                <p class="date">2023 - Şu an</p>
-                                <p>İş deneyimi detayları buraya gelecek.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation Dots (Right side) -->
-                <div class="about-nav">
-                    <button class="nav-dot active" data-target="about-main">
-                        <span class="nav-dot-label">About</span>
-                    </button>
-                    <button class="nav-dot" data-target="education">
-                        <span class="nav-dot-label">Education</span>
-                    </button>
-                    <button class="nav-dot" data-target="experience">
-                        <span class="nav-dot-label">Experience</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="section" id="projects">
-            <div class="section-content centered">
-                <h1 class="section-title">Projects</h1>
-                <div class="projects-container">
-                    <!-- Project Card 1 -->
-                    <div class="project-card" data-project="1">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Project+1" alt="Project 1">
-                        </div>
-                        <h3 class="project-name">Project Name 1</h3>
-                    </div>
-
-                    <!-- Project Card 2 -->
-                    <div class="project-card" data-project="2">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Project+2" alt="Project 2">
-                        </div>
-                        <h3 class="project-name">Project Name 2</h3>
-                    </div>
-
-                    <!-- Project Card 3 -->
-                    <div class="project-card" data-project="3">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Project+3" alt="Project 3">
-                        </div>
-                        <h3 class="project-name">Project Name 3</h3>
-                    </div>
-
-                    <!-- Project Card 4 -->
-                    <div class="project-card" data-project="4">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Project+4" alt="Project 4">
-                        </div>
-                        <h3 class="project-name">Project Name 4</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Navigation Arrows -->
-    <button class="nav-arrow left" id="prev-section" aria-label="Previous Section">
-        <span>‹</span>
-    </button>
-    <button class="nav-arrow right" id="next-section" aria-label="Next Section">
-        <span>›</span>
-    </button>
-
-    <!-- Project Modal -->
-    <div class="modal" id="project-modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="modal-body">
-                <h2 class="modal-title">Project Title</h2>
-                <div class="modal-image">
-                    <img src="" alt="Project">
-                </div>
-                <div class="modal-description">
-                    <h3>Açıklama</h3>
-                    <p>Proje detayları buraya gelecek...</p>
-                </div>
-                <div class="modal-tech">
-                    <h3>Teknolojiler</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                    </div>
-                </div>
-                <div class="modal-links">
-                    <a href="#" class="btn" target="_blank">GitHub</a>
-                    <a href="#" class="btn" target="_blank">Live Demo</a>
-                </div>
+            <!-- Accordion Container -->
+            <div class="popup-body" id="popup-accordion-container">
+                <!-- Accordion items will be dynamically inserted here -->
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-    </script>
 </body>
 </html>
-
-
