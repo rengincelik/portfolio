@@ -116,16 +116,66 @@ body {
   transition: all 0.3s;
 }
 .slide-section:hover .main-content { border-color: var(--color-primary); box-shadow: 0 0 30px rgba(0, 212, 255, 0.15); }
+
+/* Sidebar/Split Layout için Özel Stiller (GÜNCELLENMİŞ) */
+.about-content-area.split-layout {
+    display: grid;
+    /* Sol sütun (sidebar) daha dar, sağ sütun (accordion) daha geniş */
+    grid-template-columns: 250px 1fr;
+    gap: 40px;
+    align-items:center; /* Öğeleri en üste hizala */
+    text-align: right;
+    padding: 30px;
+    /* Accordion açılırken genişlik değişmesin diye min-height ekleyebilirsiniz */
+    min-height: 450px;
+}
+
+/* Sidebar Stili (GÜNCELLENMİŞ) */
+.info-sidebar {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    padding-right: 20px;
+    border-right: 1px solid var(--color-border);
+    /* Accordion'dan etkilenmemesi için height: 100% kaldırıldı */
+}
+
+.info-sidebar h1 {
+    font-size: 2.5em;
+    color: var(--color-primary);
+    margin-bottom: 5px;
+    width: 100%; /* Soldan hizalamak için */
+}
+
+.info-sidebar .profile-photo {
+    margin: 15px 0 20px 0;
+}
+
+.info-sidebar .hero-title {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.info-sidebar .contact-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.accordion-wrapper {
+    width: 100%;
+}
+
+
+/* Genel Başlık ve Link Stilleri (Genel .main-content'ten taşındı) */
 .main-content h1 { font-size: 2.5em; color: var(--color-primary); margin-bottom: 10px; }
 .hero-title { margin-bottom: 25px; opacity: 0.8; }
-.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: right; gap: 15px; margin-top: 30px; }
 .contact-links a { color: var(--color-primary); text-decoration: none; padding: 10px 20px; background: var(--color-bg); border-radius: 6px; border: 1px solid var(--color-border); transition: all 0.3s; font-weight: 500; }
 .contact-links a:hover { background: rgba(0, 212, 255, 0.1); border-color: var(--color-primary); transform: translateY(-2px); box-shadow: 0 0 10px rgba(0, 212, 255, 0.4); }
-/* style.css içinde .contact-links a stiline ekleyin */
-.contact-links a i {
-    margin-right: 8px;
-    font-size: 1.1em;
-}
+.contact-links a i { margin-right: 8px; font-size: 1.1em; }
+
 /* Scroll Arrows */
 .scroll-arrow { position: fixed; top: 70px; bottom: 0; z-index: 900; background-color: rgba(26, 26, 46, 0.3); border: none; color: var(--color-primary); width: 60px; cursor: pointer; opacity: 0.4; transition: all 0.3s; display: flex; align-items: center; justify-content: center; font-size: 2em; }
 .scroll-arrow:hover { opacity: 1; background-color: rgba(0, 212, 255, 0.2); }
@@ -134,16 +184,93 @@ body {
 
 
 /* ======================== */
+/* 2.5. PROFILE PHOTO STYLES */
+/* ======================== */
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 5px solid var(--color-primary);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    transition: all 0.3s;
+}
+
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.main-content:hover .profile-photo {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--color-primary);
+}
+
+
+/* Dropdown Stilleri (Navigasyon) */
+.nav-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 150px;
+    background: var(--color-section-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-dropdown-container:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s, color 0.2s;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nav-dropdown-menu a:hover {
+    background-color: var(--color-primary);
+    color: var(--color-header-bg);
+}
+
+.nav-dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+
+/* ======================== */
 /* 3. ACCORDION STYLES (Tasarım 1) */
 /* ======================== */
-.about-content-area {
-    /* Bu alanın içeriğinin kaydırılabilir olması için max-height ayarı */
-    overflow-y: auto;
-    max-height: calc(100vh - 140px);
-}
+/* .about-content-area KURALI KALDIRILDI */
 .accordion-container {
     width: 100%;
-    margin-top: 2rem;
+    /* Sidebar ile boşluk grid tarafından verildiği için margin kaldırılabilir */
+    margin-top: 0;
 }
 .accordion-item {
     margin-bottom: 15px;
@@ -174,12 +301,11 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
-    padding: 0 1.5rem;
-}
+    padding: 0 1.5rem;}
+
 .accordion-item.active .accordion-content {
-    max-height: 500px; /* Yeterince büyük bir değer */
-    padding: 0 1.5rem 1rem 1.5rem;
-}
+    max-height: 500px;
+    padding: 0 1.5rem 1rem 1.5rem;}
 
 .education-item, .experience-item { text-align: left; }
 .education-item h3, .experience-item h3 { color: var(--color-primary); margin-bottom: 5px; font-size: 1.1rem; }
@@ -254,8 +380,9 @@ body {
 .btn:hover { background: #00b4e0; transform: translateY(-2px); box-shadow: 0 4px 12px var(--color-shadow); }
 
 /* ======================== */
-/* 6. MOBILE RESPONSIVE */
+/* 6. MOBILE RESPONSIVE (GÜNCELLENMİŞ) */
 /* ======================== */
+
 @media (max-width: 768px) {
     /* Mobil'de dikey kaydırmaya izin ver */
     body { overflow-y: auto; }
@@ -270,90 +397,35 @@ body {
     .scroll-arrow { display: none; }
     .nav-header { padding: 10px 15px; }
     #theme-toggle { right: 15px; }
+
+    /* Mobil'de ana kutu stilleri */
     .main-content { padding: 20px; max-width: 100%; }
+
+    /* Mobil Split Layout için DÜZENLEME */
+    .about-content-area.split-layout {
+        /* Tek sütun düzenine geri dön */
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .info-sidebar {
+        /* Mobil'de tekrar ortaya hizala */
+        align-items: center;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        padding-right: 0;
+        padding-bottom: 20px;
+        width: 100%; /* Tam genişlik kullan */
+    }
+
+    .info-sidebar h1 { text-align: center; }
+    .info-sidebar .contact-links { flex-direction: row; justify-content: center; }
+
     .projects-container { grid-template-columns: 1fr; gap: 1rem; }
     .modal-content { width: 95%; max-height: 95vh; }
     .modal-image { height: 250px; }
     .accordion-item.active .accordion-content { padding: 0 1.5rem 1rem 1.5rem; }
 }
-/* ======================== */
-/* 2.5. PROFILE PHOTO STYLES */
-/* ======================== */
-.profile-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Yuvarlak hat */
-    overflow: hidden;
-    margin-bottom: 25px;
-    border: 5px solid var(--color-primary); /* Tema renginde çerçeve */
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); /* Hafif neon parlaklık */
-    transition: all 0.3s;
-}
-
-.profile-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.main-content:hover .profile-photo {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px var(--color-primary);
-}
-
-/* style.css içine, 3. FIXED HEADER bölümünün sonuna ekleyin: */
-
-.nav-dropdown-container {
-    position: relative;
-    display: inline-block; /* Sadece içeriği kadar yer kaplasın */
-}
-
-.nav-dropdown-menu {
-    position: absolute;
-    top: 100%; /* Nav butonu hemen altından başla */
-    left: 50%;
-    transform: translateX(-50%); /* Ortala */
-    min-width: 150px;
-    background: var(--color-section-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
-    z-index: 1001;
-
-    /* Başlangıçta gizle ve animasyon hazırla */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(-50%) translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* HOVER olduğunda göster */
-.nav-dropdown-container:hover .nav-dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-.nav-dropdown-menu a {
-    display: block;
-    padding: 10px 15px;
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: 14px;
-    transition: background-color 0.2s, color 0.2s;
-    text-align: center;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.nav-dropdown-menu a:hover {
-    background-color: var(--color-primary);
-    color: var(--color-header-bg); /* Ters renk, koyu temada beyaz/siyah */
-}
-
-/* Son elemanın alt çizgisini kaldır */
-.nav-dropdown-menu a:last-child {
-    border-bottom: none;
-}
-
