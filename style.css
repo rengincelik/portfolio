@@ -103,15 +103,15 @@ body {
 /* Ana İçerik Kutusu */
 .main-content {
   width: 100%;
-  max-width: 800px;
+  max-width: 1300px;
   background: var(--color-section-bg);
   padding: 40px;
   border-radius: 12px;
   border: 1px solid var(--color-border);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: right;
+  text-align: right;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
 }
@@ -121,11 +121,11 @@ body {
 .about-content-area.split-layout {
     display: grid;
     /* Sol sütun (sidebar) daha dar, sağ sütun (accordion) daha geniş */
-    grid-template-columns: 250px 1fr;
-    gap: 40px;
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
     align-items:center; /* Öğeleri en üste hizala */
-    text-align: right;
-    padding: 30px;
+    text-align: left;
+    padding: 40px;
     /* Accordion açılırken genişlik değişmesin diye min-height ekleyebilirsiniz */
     min-height: 450px;
 }
@@ -134,7 +134,7 @@ body {
 .info-sidebar {
     display:flex;
     flex-direction: column;
-    align-items:center;
+    align-items:flex-end;
     padding-right: 20px;
     border-right: 1px solid var(--color-border);
     /* Accordion'dan etkilenmemesi için height: 100% kaldırıldı */
@@ -142,6 +142,8 @@ body {
 
 .info-sidebar h1 {
     font-size: 2.5em;
+    align-items:flex-end;
+    text-align:right;
     color: var(--color-primary);
     margin-bottom: 5px;
     width: 100%; /* Soldan hizalamak için */
@@ -166,7 +168,6 @@ body {
 .accordion-wrapper {
     width: 100%;
 }
-
 
 /* Genel Başlık ve Link Stilleri (Genel .main-content'ten taşındı) */
 .main-content h1 { font-size: 2.5em; color: var(--color-primary); margin-bottom: 10px; }
