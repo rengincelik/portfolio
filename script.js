@@ -130,12 +130,28 @@ const projectData = {
                 package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/3D_PlayerMovement.unitypackage',
                 video: 'https://raw.githubusercontent.com/rengincelik/Mini-Dev-Kit/main/MiniDevKit3D/Recordings/3D_PlayerMovement.webm'
             },
+            '3d-object': {
+                name: '3D Object Movement Framework',
+                description: 'Comprehensive Unity movement system with DOTween-based animations and vehicle interaction mechanics.',
+                tech: ['DOTween', 'ScriptableObject', 'Custom Editors'],
+                github: 'https://github.com/rengincelik/Mini-Dev-Kit',
+                package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/3D_ObjectMovement.unitypackage',
+                video: 'https://via.placeholder.com/400x250/1a1a1a/4ecdc4?text=3D+Object+Movement'
+            },
             '2d-player': {
                 name: '2D Player Movement Framework',
                 description: 'Comprehensive Unity 2D player movement system with modular input mapping and sprite animations.',
                 tech: ['State Machine', 'Multiple Movement Types', 'Sprite Animation'],
                 github: 'https://github.com/rengincelik/Mini-Dev-Kit',
                 package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/2D_PlayerMovement.unitypackage',
+                video: 'https://raw.githubusercontent.com/rengincelik/Mini-Dev-Kit/main/Mini%20Dev%20Kit%202D/Recordings/2D_Movement.mp4'
+            },
+            '2d-object': {
+                name: '2D Object Movement Framework',
+                description: 'Comprehensive Unity 2D object movement system with DOTween-based animations and vehicle interaction mechanics.',
+                tech: ['DOTween', 'ScriptableObject', 'Custom Editors', 'Sprite Animation'],
+                github: 'https://github.com/rengincelik/Mini-Dev-Kit',
+                package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/2D_ObjectMovement.unitypackage',
                 video: 'https://raw.githubusercontent.com/rengincelik/Mini-Dev-Kit/main/Mini%20Dev%20Kit%202D/Recordings/2D_Movement.mp4'
             },
             'sprite-animator': {
@@ -146,15 +162,8 @@ const projectData = {
                 package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/SpriteDatabaseAnimation.unitypackage',
                 readme: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/Mini%20Dev%20Kit%202D/Assets/_SpriteDatabaseAnimation/readMe.md',
                 video: 'https://raw.githubusercontent.com/rengincelik/Mini-Dev-Kit/main/Mini%20Dev%20Kit%202D/Recordings/SpriteDatabaseAnimation.mp4'
-            },
-            '3d-object': {
-                name: '3D Object Movement Framework',
-                description: 'Comprehensive Unity movement system with DOTween-based animations and vehicle interaction mechanics.',
-                tech: ['DOTween', 'ScriptableObject', 'Custom Editors'],
-                github: 'https://github.com/rengincelik/Mini-Dev-Kit',
-                package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/3D_ObjectMovement.unitypackage',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/4ecdc4?text=3D+Object+Movement'
             }
+
         }
     },
     'games': {
@@ -270,6 +279,8 @@ accordionHeaders.forEach(header => {
 /* ======================== */
 /* 4. OLD MODAL MANTIK (Kept for compatibility) */
 /* ======================== */
+
+
 function openModal(projectId) {
     const project = projectData[projectId];
     if (!project) return;
@@ -293,7 +304,6 @@ function openModal(projectId) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
-
 function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
