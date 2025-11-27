@@ -1,91 +1,163 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Portfolyo</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Rengin Çelik - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode">
 
     <header class="nav-header">
         <div class="nav-links">
-            <a href="#hakkinda" class="nav-button active" data-target="hakkinda">Hakkımda</a>
-            <a href="#projeler" class="nav-button" data-target="projeler">Projeler</a>
-            <a href="#deneyim" class="nav-button" data-target="deneyim">Deneyim</a>
-            <a href="#iletisim" class="nav-button" data-target="iletisim">İletişim</a>
-        </div>
-        
-        <button id="theme-toggle" aria-label="Temayı Değiştir">☀️</button>
+            </div>
+        <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
     </header>
 
-    <button class="scroll-arrow left-arrow" aria-label="Sola Kaydır">←</button>
-    <button class="scroll-arrow right-arrow" aria-label="Sağa Kaydır">→</button>
+    <button class="scroll-arrow left-arrow" aria-label="Scroll Left">←</button>
+    <button class="scroll-arrow right-arrow" aria-label="Scroll Right">→</button>
 
     <main class="slider-wrapper" id="slider-wrapper">
-        
-        <section id="hakkinda" class="slide-section section-1">
+
+        <section id="about-me" class="slide-section">
             <div class="main-content">
-                <h1>Merhaba, ben [ADINIZ SOYADINIZ]</h1>
-                <p>Kısaca kendimi tanıtmak gerekirse, web teknolojileri üzerine çalışan, minimalist tasarımları seven bir geliştiriciyim.</p>
-                <button class="detail-toggle-btn" data-detail-target="hakkinda-detail">
-                    Beni Daha Yakından Tanıyın →
+                <h1>Rengin Çelik</h1>
+                <p>Unity Developer & Technical Artist</p>
+                <button class="detail-toggle-btn" data-detail-target="about-detail" data-parent="about-me">
+                    Learn More About Me →
                 </button>
             </div>
-            <div class="detail-view" id="hakkinda-detail">
-                <h2>Biyografi ve Felsefe</h2>
-                <p>Detaylı biyografiniz, hayat felsefeniz ve hobileriniz bu kısımda yer alacak.</p>
-                <button class="return-btn">← Ana Konuya Geri Dön</button>
+            <div class ="detail-view" id="about-detail">
+                <div class="detail-content-area">
+                    <div class="detail-slider-wrapper" id="detail-slider">
+
+                        <div id="about" class="detail-item" data-item-name="About">
+                            <div class="detail-content">
+                                <h2>About Me</h2>
+                                <p>Unity Developer and Technical Artist with a strong engineering background, specializing in shader development, performance optimization, and tool creation. I combine analytical problem-solving with technical artistry to create efficient, visually compelling game systems.</p>
+                                <p style="margin-top: 15px;">Focused on GPU optimization, custom tooling, and bridging the gap between art and engineering in game development.</p>
+                            </div>
+                        </div>
+                        <div id="education" class="detail-item" data-item-name="Education">
+                            <div class="detail-content">
+                                <div class="education-item">
+                                    <h3>ITU</h3>
+                                    <div class="role">Bachelor of Engineering — Food Engineering</div>
+                                    <ul>
+                                        <li>Completed coursework in thermodynamics, process control, and fluid mechanics</li>
+                                        <li>Conducted laboratory studies on food safety, rheology, and quality control</li>
+                                        <li>Worked on semester projects focused on data analysis and experimental design</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="experience" class="detail-item" data-item-name="Experience">
+                            <div class="detail-content">
+                                <div class="experience-item">
+                                    <h3>iBright</h3>
+                                    <div class="role">Unity Developer & Technical Artist</div>
+                                    <ul>
+                                        <li>Developed custom 2D tools for the team (Depth Ordering System, Sprite Animation Tools)</li>
+                                        <li>Worked on Livber project: bug fixes, feature implementation, and shader development</li>
+                                        <li>Implemented performance optimizations for mobile and PC platforms</li>
+                                        <li>Created reusable pipeline tools to streamline development workflow</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="return-about" class="detail-item" data-item-name="Return">
+                            <div class="detail-content">
+                                <button class="return-btn" data-return-slide="about-me">← Return to Main</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="detail-scroll-arrow detail-left-arrow" aria-label="Previous Project">←</button>
+                    <button class="detail-scroll-arrow detail-right-arrow" aria-label="Next Project">→</button>
+                </div>
             </div>
         </section>
 
-        <section id="projeler" class="slide-section section-2">
+        <section id="projects" class="slide-section">
             <div class="main-content">
-                <h1>Öne Çıkan Projelerim</h1>
-                <p>En son ve en çok gurur duyduğum projelerimin özetleri burada. Daha fazlası için detay sayfasına göz atın!</p>
-                <button class="detail-toggle-btn" data-detail-target="projeler-detail">
-                    Tüm Projeleri İncele →
+                <h1>Featured Projects</h1>
+                <p>Summaries of my latest and most proud projects. Click to view all projects!</p>
+                <button class="detail-toggle-btn" data-detail-target="projects-detail" data-parent="projects">
+                    View All Projects →
                 </button>
             </div>
-            <div class="detail-view" id="projeler-detail">
-                <h2>Detaylı Proje Listesi</h2>
-                <p>Buraya kartlar, resimler ve linklerle dolu, tüm projelerinizin yer aldığı bir liste eklenecek.</p>
-                <button class="return-btn">← Ana Konuya Geri Dön</button>
+
+            <div class="detail-view" id="projects-detail">
+                <div class="detail-content-area">
+                    <div class="detail-slider-wrapper" id="project-slider">
+
+                        <div id="gpu-instancing" class="detail-item" data-item-name="GPU Instancing">
+                            <div class="detail-content">
+                                <h3>GPU Instancing</h3>
+                                <div class="tech">GPU Instancing Methods</div>
+                                <p>GPU instancing approaches for rendering massive object counts efficiently.</p>
+                                <a href="https://rengincelik.github.io/GPU_Rendering/" class="detail-link" target="_blank">View Project →</a>
+                            </div>
+                        </div>
+
+                        <div id="shader-library" class="detail-item" data-item-name="Shader Library">
+                            <div class="detail-content">
+                                <h3>Shader Library</h3>
+                                <div class="tech">URP Shader Library</div>
+                                <p>Advanced material shaders & visual effects for URP.</p>
+                                <a href="https://rengincelik.github.io/Shaders/" class="detail-link" target="_blank">View Project →</a>
+                            </div>
+                        </div>
+
+                        <div id="mini-dev-kit" class="detail-item" data-item-name="Mini Dev Kit">
+                            <div class="detail-content">
+                                <h3>Mini Dev Kit</h3>
+                                <div class="tech">Reusable Development Tools</div>
+                                <p>A collection of reusable tools and systems designed to accelerate game development, featuring modular components for common gameplay mechanics and editor utilities.</p>
+                                <a href="https://rengincelik.github.io/Mini-Dev-Kit/" class="detail-link" target="_blank">View Project →</a>
+                            </div>
+                        </div>
+
+                        <div id="cofu" class="detail-item" data-item-name="Cofu">
+                            <div class="detail-content">
+                                <h3>Cofu</h3>
+                                <div class="tech">Mobile Puzzle Game | Unity / C#</div>
+                                <p>A mobile puzzle game featuring engaging mechanics and polished gameplay. Implemented grid-based logic, swipe controls, and level progression system.</p>
+                                <a href="https://rengincelik.github.io/CoFu/" class="detail-link" target="_blank">View Project →</a>
+                            </div>
+                        </div>
+                        <div id="return-projects" class="detail-item" data-item-name="Return">
+                            <div class="detail-content">
+                                <button class="return-btn" data-return-slide="projects">← Return to Main</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button class="detail-scroll-arrow detail-left-arrow" aria-label="Previous Project">←</button>
+                    <button class="detail-scroll-arrow detail-right-arrow" aria-label="Next Project">→</button>
+                </div>
             </div>
         </section>
 
-        <section id="deneyim" class="slide-section section-3">
+        <section id="contact" class="slide-section">
             <div class="main-content">
-                <h1>İş ve Eğitim Deneyimi</h1>
-                <p>Kariyer yolculuğumdaki önemli duraklar ve edindiğim beceriler. Bir özet görmek için tıklayın.</p>
-                <button class="detail-toggle-btn" data-detail-target="deneyim-detail">
-                    Özgeçmişin Tamamını Gör →
-                </button>
-            </div>
-            <div class="detail-view" id="deneyim-detail">
-                <h2>Özgeçmiş (CV) Detayları</h2>
-                <p>Bu alanda bir zaman çizelgesi (timeline) veya resmi özgeçmişinizin daha detaylı bir sunumu yer alabilir.</p>
-                <button class="return-btn">← Ana Konuya Geri Dön</button>
+                <h2>Contact</h2>
+                <p>📞 +90 538 968 69 77</p>
+                <p>✉️ <a href="mailto:rengin.celik97@gmail.com">rengin.celik97@gmail.com</a></p>
+                <p>🌍 Istanbul, Turkey</p>
+
+                <div class="contact-links">
+                    <a href="https://linkedin.com/in/rengincelik" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/rengincelik" target="_blank">GitHub</a>
+                    <a href="https://rengincelik.itch.io" target="_blank">itch.io</a>
+                </div>
             </div>
         </section>
 
-        <section id="iletisim" class="slide-section section-4">
-            <div class="main-content">
-                <h1>Benimle İletişime Geçin</h1>
-                <p>Bana ulaşmanın en hızlı yolları ve sosyal medya hesaplarım.</p>
-                <button class="detail-toggle-btn" data-detail-target="iletisim-detail">
-                    İletişim Formunu Aç →
-                </button>
-            </div>
-            <div class="detail-view" id="iletisim-detail">
-                <h2>İletişim Formu</h2>
-                <p>Buraya e-posta, isim gibi alanları olan bir **HTML Formu** yerleştirebilirsin.</p>
-                <button class="return-btn">← Ana Konuya Geri Dön</button>
-            </div>
-        </section>
-        
     </main>
 
     <script src="script.js"></script>
 </body>
 </html>
+

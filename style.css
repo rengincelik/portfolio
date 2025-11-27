@@ -1,16 +1,10 @@
 /* ======================== */
-/* 1. TEMA DEĞİŞKENLERİ */
+/* 1. THEME VARIABLES */
 /* ======================== */
-/* NOT: Tema değiştirme fonksiyonunu korumak için, 
-   CYBERPUNK stilini .dark-mode sınıfına yüklüyoruz.
-   Başlangıçta bu görünümle başlamak için HTML'deki <body> etiketine 
-   default olarak 'dark-mode' sınıfını eklemeyi unutmayın. */
-
 :root {
-  /* LIGHT MODE (Varsayılan/Yedek) */
   --color-bg: #ffffff;
   --color-text: #333333;
-  --color-primary: #007bff; /* Standard Vurgu Mavi */
+  --color-primary: #007bff;
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-section-bg: #ffffff;
   --color-header-bg: #f8f8f8;
@@ -18,18 +12,17 @@
 }
 
 .dark-mode {
-  /* CYBERPUNK / NEON DARK MODE */
   --color-bg: #0a0a0a;
   --color-text: #e0e0e0;
-  --color-primary: #00d4ff; /* Neon Mavi Vurgu */
-  --color-shadow: 0 0 10px rgba(0, 212, 255, 0.5); /* Neon Gölge */
+  --color-primary: #00d4ff;
+  --color-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
   --color-section-bg: #151515;
   --color-header-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   --color-border: #252525;
 }
 
 /* ======================== */
-/* 2. GENEL SIFIRLAMA VE TEMEL STİLLER */
+/* 2. GENERAL RESET */
 /* ======================== */
 * {
   margin: 0;
@@ -42,13 +35,13 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  overflow: hidden; /* Dikey kaydırmayı tamamen engeller */
+  overflow: hidden;
   height: 100vh;
   transition: background-color 0.4s, color 0.4s;
 }
 
 /* ======================== */
-/* 3. SABİT BAŞLIK (HEADER) */
+/* 3. FIXED HEADER */
 /* ======================== */
 .nav-header {
   position: fixed;
@@ -61,20 +54,25 @@ body {
   align-items: center;
   gap: 20px;
   z-index: 1000;
-  
-  /* NEON HEADER STİLLERİ */
   background: var(--color-header-bg);
   border-bottom: 2px solid var(--color-primary);
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
+.nav-links {
+  display: flex;
+  gap: 20px;
+  transition: opacity 0.3s;
+}
+
 .nav-header .nav-button {
   text-decoration: none;
-  color: var(--color-primary); /* Vurgu Rengi */
+  color: var(--color-primary);
   font-size: 16px;
   padding: 8px 15px;
   border-bottom: 3px solid transparent;
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .nav-header .nav-button:hover {
@@ -89,7 +87,6 @@ body {
   font-weight: 600;
 }
 
-/* Tema Değiştirici Buton Stili */
 #theme-toggle {
   background: none;
   border: 1px solid var(--color-primary);
@@ -103,12 +100,12 @@ body {
 }
 
 #theme-toggle:hover {
-    background-color: rgba(0, 212, 255, 0.1);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  background-color: rgba(0, 212, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
 
 /* ======================== */
-/* 4. YATAY SLIDER VE BÖLÜMLER */
+/* 4. HORIZONTAL SLIDER */
 /* ======================== */
 .slider-wrapper {
   display: flex;
@@ -119,6 +116,11 @@ body {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding-top: 70px;
+  scrollbar-width: none;
+}
+
+.slider-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .slide-section {
@@ -130,128 +132,379 @@ body {
   align-items: center;
   text-align: center;
   padding: 0 5vw;
+  position: relative;
 }
 
 /* ======================== */
-/* 5. İÇERİK ve DETAY GÖRÜNÜMÜ STİLİ */
-/* (Syllabus görünümü ve Detay geçişi için) */
+/* 5. CONTENT STYLES - PANCAKE OVERLAY */
 /* ======================== */
-
-/* Her iki içerik bloğu da tam alanı kaplamalı */
-.main-content,
-.detail-view {
-    width: 100%;
-    max-width: 800px;
-    height: 100%;
-    background: var(--color-section-bg);
-    padding: 40px;
-    border-radius: 12px;
-    border: 1px solid var(--color-border);
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s;
-    /* Neon Dark Stili */
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.05); 
+.main-content {
+  width: 100%;
+  max-width: 800px;
+  background: var(--color-section-bg);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
 }
 
-/* Bölüm üzerine gelince (hover) neon border/glow efekti */
 .slide-section:hover .main-content {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
 }
 
-/* Başlıklar */
-.main-content h1, .detail-view h2 {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    margin-bottom: 25px;
-    /* Başlıkta Neon Glow efekti */
-    text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
-}
-
-/* Alt Metinler (Syllabus Görünümü) */
-.main-content p, .detail-view p {
-    max-width: 600px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2em;
-}
-
-/* BUTONLAR (Detail Toggle ve Return) */
-.detail-toggle-btn, .return-btn {
-    margin-top: 20px;
-    padding: 10px 25px;
-    background-color: var(--color-primary);
-    color: var(--color-dark-bg);
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s;
-    /* Buton Neon Işıltı */
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5); 
-}
-
-.detail-toggle-btn:hover, .return-btn:hover {
-    background-color: #00b4e0;
-    transform: translateY(-1px);
-    box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
-}
-
-/* Görünürlük Mantığı */
-.slide-section .detail-view {
-    display: none; 
-    animation: fadeIn 0.5s ease; /* Fade-in animasyonu korundu */
-}
-
-.slide-section.show-detail .main-content {
-    display: none;
+/* Detail View - Positioned absolutely on top */
+.detail-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 10;
 }
 
 .slide-section.show-detail .detail-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.slide-section.show-detail .main-content {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Detail Content Area - Takes most space */
+.detail-content-area {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 /* ======================== */
-/* 6. KAYDIRMA OKLARI */
+/* 6. TYPOGRAPHY */
 /* ======================== */
+.main-content h1,
+.main-content h2,
+.detail-content-area h2 {
+  font-size: 2.5em;
+  color: var(--color-primary);
+  margin-bottom: 25px;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+.main-content p,
+.detail-content-area p {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2em;
+}
+
+/* ======================== */
+/* 7. BUTTONS */
+/* ======================== */
+.detail-toggle-btn,
+.return-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: var(--color-primary);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+.detail-toggle-btn:hover,
+.return-btn:hover {
+  background-color: #00b4e0;
+  transform: translateY(-1px);
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+}
+
+/* ======================== */
+/* 8. SCROLL ARROWS - FULL HEIGHT */
+/* ======================== */
+
 .scroll-arrow {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 70px;
+  bottom: 0;
   z-index: 900;
-  background-color: rgba(26, 26, 46, 0.8);
-  border: 1px solid var(--color-primary);
+  background-color: rgba(26, 26, 46, 0.3);
+  border: none;
   color: var(--color-primary);
-  padding: 15px 10px;
+  width: 60px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.4;
   transition: all 0.3s;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
 }
 
 .scroll-arrow:hover {
+  opacity: 1;
+  background-color: rgba(0, 212, 255, 0.2);
+}
+
+.left-arrow {
+  left: 0;
+  border-right: 1px solid var(--color-primary);
+}
+
+.right-arrow {
+  right: 0;
+  border-left: 1px solid var(--color-primary);
+}
+
+/* ======================== */
+/* 9. CONTACT SECTION */
+/* ======================== */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.contact-links a {
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 10px 20px;
+  background: var(--color-section-bg);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.contact-links a:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+}
+
+/* ======================== */
+/* 10. EXPERIENCE / EDUCATION ITEMS */
+/* ======================== */
+.experience-item,
+.education-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border-left: 3px solid var(--color-primary);
+  transition: all 0.3s;
+  text-align: left;
+  width: 100%;
+  max-width: 700px;
+}
+
+.experience-item:hover,
+.education-item:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.experience-item h3,
+.education-item h3 {
+  color: var(--color-text);
+  font-size: 1.4em;
+  margin-bottom: 8px;
+}
+
+.experience-item .role,
+.education-item .role {
+  color: var(--color-primary);
+  font-size: 0.95em;
+  margin-bottom: 12px;
+}
+
+.experience-item ul,
+.education-item ul {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.experience-item li,
+.education-item li {
+  padding-left: 25px;
+  position: relative;
+  margin-bottom: 8px;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.experience-item li::before,
+.education-item li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-size: 1.2em;
+}
+
+/* ======================== */
+/* 11. DETAIL SLIDER (GENERAL) */
+/* ======================== */
+.detail-slider-wrapper {
+  display: flex;
+  width: 90%;
+  max-width: 1000px;
+  height: 60vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  margin: 20px 0;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-section-bg);
+  scrollbar-width: none;
+  position: relative;
+}
+
+.detail-slider-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.detail-item {
+  flex-shrink: 0;
+  width: 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.detail-content {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.detail-item h3 {
+  color: var(--color-text);
+  font-size: 1.8em;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
+}
+
+.detail-item .tech {
+  color: var(--color-primary);
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.detail-link { /* .project-link yerine */
+  display: inline-block;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-top: 20px;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.detail-link:hover {
+  transform: translateX(5px);
+  text-decoration: underline;
+}
+
+/* Detail Navigation Arrows */
+
+.detail-scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+  background-color: rgba(26, 26, 46, 0.7);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s;
+  border-radius: 50%;
+}
+
+.detail-scroll-arrow:hover {
   opacity: 1;
   background-color: rgba(0, 212, 255, 0.1);
   box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
 }
 
-.left-arrow {
-  left: 10px;
+.detail-left-arrow {
+  left: 20px;
 }
 
-.right-arrow {
-  right: 10px;
+.detail-right-arrow {
+  right: 20px;
 }
+
+/* ======================== */
+/* 12. MOBILE RESPONSIVE */
+/* ======================== */
+@media (max-width: 768px) {
+  .nav-header {
+    padding: 10px 15px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .nav-header .nav-button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  #theme-toggle {
+    right: 15px;
+    padding: 4px 8px;
+  }
+
+  .main-content h1,
+  .main-content h2,
+  .detail-content-area h2 {
+    font-size: 1.8em;
+  }
+
+  .scroll-arrow {
+    width: 40px;
+    font-size: 1.5em;
+  }
+
+  .detail-content-area {
+    padding: 10px;
+  }
+
+  .detail-slider-wrapper {
+    height: 50vh;
+  }
+}
+
