@@ -28,7 +28,7 @@ let megaMenuTitles, megaMenuItems;
 const projectData = {
     'gpu-instancing': {
         title: 'GPU Instancing & Rendering',
-        image: 'https://via.placeholder.com/800x500/1a1a1a/00d4ff?text=GPU+Instancing',
+        image: '',
         description: 'High-performance Unity solutions for massive object rendering',
         technologies: ['Unity URP', 'Compute Shaders', 'HLSL'],
         github: 'https://github.com/rengincelik/GPU_Rendering',
@@ -40,7 +40,7 @@ const projectData = {
                 tech: ['Compute Shader', 'DrawMeshInstanced', 'Matrix Calculation'],
                 github: 'https://github.com/rengincelik/GPU_Rendering',
                 package: 'https://github.com/rengincelik/GPU_Rendering/blob/main/3D_GPU_Instancing.unitypackage',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=3D+GPU+Demo'
+                video: 'https://raw.githubusercontent.com/rengincelik/GPU_Rendering/main/GPU_Instancing/Recordings/3D_CPU.webm'
             },
             'gpu-sprite': {
                 name: 'GPU Sprite Instancing',
@@ -48,7 +48,7 @@ const projectData = {
                 tech: ['Atomic Operations', 'Frustum Culling', 'DrawMeshInstancedIndirect'],
                 github: 'https://github.com/rengincelik/GPU_Rendering',
                 package: 'https://github.com/rengincelik/GPU_Rendering/blob/main/GPU_Sprite_Demo.unitypackage',
-                video: 'https://raw.githubusercontent.com/rengincelik/GPU_Rendering/main/GPU_Instancing/Recordings/Eraser.mp4'
+                video: 'https://raw.githubusercontent.com/rengincelik/GPU_Rendering/main/GPU_Instancing/Recordings/Eraser.webm'
             },
             'grass': {
                 name: 'GPU Grass Rendering',
@@ -56,7 +56,7 @@ const projectData = {
                 tech: ['ProBuilder', 'Gradient Coloring', 'Procedural Generation'],
                 github: 'https://github.com/rengincelik/GPU_Rendering',
                 package: 'https://github.com/rengincelik/GPU_Rendering/blob/main/Grass_Leaf.unitypackage',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=Grass+Demo'
+                video: 'https://raw.githubusercontent.com/rengincelik/GPU_Rendering/main/GPU_Instancing/Recordings/Grass.webm'
             },
             'random-spawn': {
                 name: 'Random Spawn System',
@@ -64,7 +64,7 @@ const projectData = {
                 tech: ['Compute Shader', 'Random Generation', 'Bounded Area'],
                 github: 'https://github.com/rengincelik/GPU_Rendering',
                 package: 'https://github.com/rengincelik/GPU_Rendering/blob/main/3D_RandomSpawn.unitypackage',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=Random+Spawn'
+                video: 'https://raw.githubusercontent.com/rengincelik/GPU_Rendering/main/GPU_Instancing/Recordings/Random.webm'
             },
             'scaling': {
                 name: 'Simple Scaling System',
@@ -72,7 +72,7 @@ const projectData = {
                 tech: ['Grid System', 'Real-time Scaling', 'URP Lighting'],
                 github: 'https://github.com/rengincelik/GPU_Rendering',
                 package: 'https://github.com/rengincelik/GPU_Rendering/blob/main/3D_ScalingItems.unitypackage',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/00d4ff?text=Scaling'
+                video: 'https://raw.githubusercontent.com/rengincelik/GPU_Rendering/main/GPU_Instancing/Recordings/Scale.webm'
             }
         }
     },
@@ -98,25 +98,25 @@ const projectData = {
                 github: 'https://github.com/rengincelik/Shaders',
                 video: 'https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/BasicURP_VelvetShader.png'
             },
-            'water': {
-                name: 'Water Surface Shader',
-                description: 'Dynamic water surface with vertex displacement, procedural waves, and depth-based coloring.',
-                tech: ['Vertex Displacement', 'Wave Simulation', 'Normal Calculation'],
-                github: 'https://github.com/rengincelik/Shaders',
-                video: 'https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/WaterSurface.png'
-            },
             'lit-surface': {
                 name: 'Advanced Surface Shader',
                 description: 'Highly configurable surface shader with metallic, glossy, roughness, and matte modes.',
                 tech: ['Multi-Mode', 'Procedural Roughness', 'Shadow Integration'],
                 github: 'https://github.com/rengincelik/Shaders',
                 video: 'https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/BasicLit_AdvancedSurface.png'
+            },
+            'water': {
+                name: 'Water Surface Shader',
+                description: 'Dynamic water surface with vertex displacement, procedural waves, and depth-based coloring.',
+                tech: ['Vertex Displacement', 'Wave Simulation', 'Normal Calculation'],
+                github: 'https://github.com/rengincelik/Shaders',
+                video: 'https://raw.githubusercontent.com/rengincelik/Shaders/main/ShaderSamples/Recordings/WaterSurface.png'
             }
         }
     },
     'mini-dev-kit': {
         title: 'Mini Dev Kit',
-        image: 'https://via.placeholder.com/800x500/1a1a1a/4ecdc4?text=Mini+Dev+Kit',
+        image: '',
         description: 'Reusable development tools & systems',
         technologies: ['Unity Editor', 'C#', 'Tools', 'ScriptableObjects'],
         github: 'https://github.com/rengincelik/Mini-Dev-Kit',
@@ -136,7 +136,7 @@ const projectData = {
                 tech: ['DOTween', 'ScriptableObject', 'Custom Editors'],
                 github: 'https://github.com/rengincelik/Mini-Dev-Kit',
                 package: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/3D_ObjectMovement.unitypackage',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/4ecdc4?text=3D+Object+Movement'
+                video: ''
             },
             '2d-player': {
                 name: '2D Player Movement Framework',
@@ -168,7 +168,7 @@ const projectData = {
     },
     'games': {
         title: 'Games',
-        image: 'https://via.placeholder.com/800x500/1a1a1a/95e1d3?text=Games',
+        image: '',
         description: 'Published game projects',
         technologies: ['Unity', 'Mobile', 'UI/UX'],
         github: 'https://github.com/rengincelik/CoFu',
@@ -180,7 +180,7 @@ const projectData = {
                 tech: ['Unity', 'Mobile', 'UI/UX', 'Puzzle Mechanics'],
                 github: 'https://github.com/rengincelik/CoFu',
                 demo: 'https://rengincelik.itch.io/cofu',
-                video: 'https://via.placeholder.com/400x250/1a1a1a/95e1d3?text=Cofu+Game'
+                video: ''
             }
         }
     }
@@ -511,259 +511,5 @@ document.addEventListener('keydown', (e) => {
 /* ======================== */
 setupMainNavListeners();
 
-// ========================================
-// FOG WIPE EFFECT - WebGL Implementation (FIXED)
-// ========================================
 
-(function() {
-    var canvas = document.getElementById('fogCanvas');
-    if (!canvas) {
-        console.error('fogCanvas bulunamadı!');
-        return;
-    }
 
-    var gl = canvas.getContext('webgl', { premultipliedAlpha: false, alpha: true}) ||
-             canvas.getContext('experimental-webgl', { premultipliedAlpha: false, alpha: true });
-
-    if (!gl) {
-        console.error('WebGL desteklenmiyor!');
-        return;
-    }
-
-    var fogData;
-    var texture;
-    var program;
-    var isDrawing = false;
-    var currentWidth = 0;
-    var currentHeight = 0;
-
-    // Canvas boyutunu DOĞRU şekilde ayarla
-    function resizeCanvas() {
-        var container = canvas.parentElement;
-        var rect = container.getBoundingClientRect();
-
-        // Daha küçük bir çözünürlük kullan (performans için)
-        var scale = window.devicePixelRatio || 1;
-        var newWidth = Math.floor(rect.width * 0.5); // %50 çözünürlük
-        var newHeight = Math.floor(rect.height * 0.5);
-
-        // Sadece boyut değiştiyse güncelle
-        if (newWidth !== currentWidth || newHeight !== currentHeight) {
-            currentWidth = newWidth;
-            currentHeight = newHeight;
-            canvas.width = newWidth;
-            canvas.height = newHeight;
-            gl.viewport(0, 0, newWidth, newHeight);
-            initFog();
-        }
-    }
-
-    // Shader sources
-    var vertexShaderSource =
-        'attribute vec2 a_position;' +
-        'attribute vec2 a_texCoord;' +
-        'varying vec2 v_texCoord;' +
-        'void main() {' +
-        '    gl_Position = vec4(a_position, 0.0, 1.0);' +
-        '    v_texCoord = a_texCoord;' +
-        '}';
-
-    var fragmentShaderSource =
-        'precision mediump float;' +
-        'uniform sampler2D u_fogTexture;' +
-        'varying vec2 v_texCoord;' +
-        'void main() {' +
-        '    float fogValue = texture2D(u_fogTexture, v_texCoord).r;' +
-        '    vec3 fogColor = vec3(0.35, 0.35, 0.37);' + // Orta gri sis
-        '    gl_FragColor = vec4(fogColor, fogValue * 0.98);' + // Alpha ile şeffaflık
-        '}';
-
-    function createShader(gl, type, source) {
-        var shader = gl.createShader(type);
-        gl.shaderSource(shader, source);
-        gl.compileShader(shader);
-
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-            console.error('Shader derlenirken hata:', gl.getShaderInfoLog(shader));
-            gl.deleteShader(shader);
-            return null;
-        }
-
-        return shader;
-    }
-
-    // Shader'ları oluştur
-    var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-    var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
-
-    if (!vertexShader || !fragmentShader) {
-        console.error('Shader oluşturulamadı!');
-        return;
-    }
-
-    program = gl.createProgram();
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error('Program oluşturulurken hata:', gl.getProgramInfoLog(program));
-        return;
-    }
-
-    gl.useProgram(program);
-
-    // Blending ayarları (şeffaflık için)
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-
-    // Vertex buffer
-    var positions = new Float32Array([
-        -1, -1,  0, 1,
-         1, -1,  1, 1,
-        -1,  1,  0, 0,
-         1,  1,  1, 0
-    ]);
-
-    var buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
-
-    var positionLocation = gl.getAttribLocation(program, 'a_position');
-    var texCoordLocation = gl.getAttribLocation(program, 'a_texCoord');
-
-    gl.enableVertexAttribArray(positionLocation);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 16, 0);
-
-    gl.enableVertexAttribArray(texCoordLocation);
-    gl.vertexAttribPointer(texCoordLocation, 2, gl.FLOAT, false, 16, 8);
-
-    // Texture oluştur
-    texture = gl.createTexture();
-
-    function initFog() {
-        var width = canvas.width;
-        var height = canvas.height;
-
-        console.log('Fog canvas boyutu:', width, 'x', height);
-
-        // Yeni fogData array'i oluştur
-        fogData = new Uint8Array(width * height);
-
-        // Başlangıçta tüm ekranı sisle kapla
-        for (var i = 0; i < fogData.length; i++) {
-            fogData[i] = 255;
-        }
-
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, width, height, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, fogData);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    }
-
-    resizeCanvas();
-
-    // Render loop
-    function render() {
-        gl.clearColor(0, 0, 0, 0); // Şeffaf arka plan
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-        requestAnimationFrame(render);
-    }
-
-    render();
-
-    // Sis silme fonksiyonu
-    function wipeFog(clientX, clientY) {
-        if (!fogData || canvas.width === 0 || canvas.height === 0) return;
-
-        var rect = canvas.getBoundingClientRect();
-        var scaleX = canvas.width / rect.width;
-        var scaleY = canvas.height / rect.height;
-
-        var pixelX = Math.floor((clientX - rect.left) * scaleX);
-        var pixelY = Math.floor((clientY - rect.top) * scaleY);
-
-        var brushSize = 20; // Daha küçük fırça
-
-        for (var dy = -brushSize; dy <= brushSize; dy++) {
-            for (var dx = -brushSize; dx <= brushSize; dx++) {
-                var distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance <= brushSize) {
-                    var px = pixelX + dx;
-                    var py = pixelY + dy;
-
-                    if (px >= 0 && px < canvas.width && py >= 0 && py < canvas.height) {
-                        var index = py * canvas.width + px;
-
-                        var falloff = 1 - (distance / brushSize);
-                        var reduction = Math.floor(falloff * 200);
-                        fogData[index] = Math.max(0, fogData[index] - reduction);
-                    }
-                }
-            }
-        }
-
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, canvas.width, canvas.height, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, fogData);
-    }
-
-    // Mouse olayları
-    canvas.addEventListener('mousedown', function(e) {
-        isDrawing = true;
-        wipeFog(e.clientX, e.clientY);
-    });
-
-    canvas.addEventListener('mousemove', function(e) {
-        if (isDrawing) {
-            wipeFog(e.clientX, e.clientY);
-        }
-    });
-
-    canvas.addEventListener('mouseup', function() {
-        isDrawing = false;
-    });
-
-    canvas.addEventListener('mouseleave', function() {
-        isDrawing = false;
-    });
-
-    // Touch olayları
-    canvas.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        isDrawing = true;
-        var touch = e.touches[0];
-        wipeFog(touch.clientX, touch.clientY);
-    });
-
-    canvas.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-        if (isDrawing) {
-            var touch = e.touches[0];
-            wipeFog(touch.clientX, touch.clientY);
-        }
-    });
-
-    canvas.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        isDrawing = false;
-    });
-
-    // Reset butonu
-    var resetBtn = document.getElementById('fogResetBtn');
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            initFog();
-        });
-    }
-
-    // Pencere boyutu değiştiğinde
-    var resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(resizeCanvas, 250);
-    });
-})();

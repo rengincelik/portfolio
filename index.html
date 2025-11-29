@@ -39,8 +39,8 @@
                         <div class="mega-menu-items">
                             <a href="#" data-project-id="shader-library" data-sub-project="silk">Silk Shader</a>
                             <a href="#" data-project-id="shader-library" data-sub-project="velvet">Velvet Shader</a>
-                            <a href="#" data-project-id="shader-library" data-sub-project="water">Water Surface</a>
                             <a href="#" data-project-id="shader-library" data-sub-project="lit-surface">Advanced Surface</a>
+                            <a href="#" data-project-id="shader-library" data-sub-project="water">Water Surface</a>
                         </div>
                     </div>
 
@@ -82,13 +82,11 @@
         <section id="about-me" class="slide-section">
             <div class="main-content about-content-area split-layout">
 
+                <canvas id="fogCanvas"></canvas>
+
+
                 <div class="info-sidebar">
-                    <div class="fog-background">
-                        <canvas id="fogCanvas"></canvas>
-                        <button class="fog-reset-btn" id="fogResetBtn" title="Clean the fog">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
+
                     <div class="profile-photo">
                         <img src="https://raw.githubusercontent.com/rengincelik/portfolio/main/portf%C3%B6y.jpg">
                     </div>
@@ -171,6 +169,7 @@
                 <h1>Featured Projects</h1>
                 <p>Click on any project card to see details, technology stack, and live demos.</p>
 
+                <canvas id="fogCanvas"></canvas>
                 <div class="projects-container">
                     <div class="project-card" data-project="gpu-instancing">
                         <div class="project-image">
@@ -267,5 +266,8 @@
     </div>
 
     <script src="script.js"></script>
+
+
+    <script src="fog/fog_timeBased.js"></script>
 </body>
 </html>
