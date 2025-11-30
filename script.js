@@ -1,30 +1,20 @@
-// Global Element Selection
+// ========================================
+// GLOBAL VARIABLES & ELEMENTS
+// ========================================
 const body = document.body;
 const themeToggle = document.getElementById('theme-toggle');
 const sliderWrapper = document.getElementById('slider-wrapper');
 const header = document.querySelector('.nav-header');
-
-// Main Slides and Navigation Elements
 const sections = document.querySelectorAll('.slide-section');
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 const navLinksDiv = header.querySelector('.nav-links');
-
-// Accordion Elements
 const accordionHeaders = document.querySelectorAll('.accordion-header');
 const accordionItems = document.querySelectorAll('.accordion-item');
 
-// Modal Elements (Old modal - keep for compatibility)
-const projectCards = document.querySelectorAll('.project-card');
-const modal = document.getElementById('project-modal');
-const modalClose = modal.querySelector('.modal-close');
-const modalOverlay = modal.querySelector('.modal-overlay');
-
-// Popup Elements - Will be initialized after DOM loads
-let projectPopup, popupClose, popupOverlay, popupTitle, popupTabs, popupAccordionContainer;
-let megaMenuTitles, megaMenuItems;
-
-// Project Data
+// ========================================
+// PROJECT DATA
+// ========================================
 const projectData = {
     'gpu-instancing': {
         title: 'GPU Instancing & Rendering',
@@ -78,7 +68,7 @@ const projectData = {
     },
     'shader-library': {
         title: 'Unity Shader Library',
-        image: 'https://via.placeholder.com/800x500/1a1a1a/ff6b6b?text=Shader+Library',
+        image: '',
         description: 'Advanced material shaders & visual effects for URP',
         technologies: ['Unity Shader Graph', 'HLSL', 'URP', 'VFX'],
         github: 'https://github.com/rengincelik/Shaders',
@@ -163,7 +153,6 @@ const projectData = {
                 readme: 'https://github.com/rengincelik/Mini-Dev-Kit/blob/main/Mini%20Dev%20Kit%202D/Assets/_SpriteDatabaseAnimation/readMe.md',
                 video: 'https://raw.githubusercontent.com/rengincelik/Mini-Dev-Kit/main/Mini%20Dev%20Kit%202D/Recordings/SpriteDatabaseAnimation.mp4'
             }
-
         }
     },
     'games': {
@@ -186,16 +175,16 @@ const projectData = {
     }
 };
 
-/* ======================== */
-/* 1. TEMA VE BAŞLANGIÇ AYARLARI */
-/* ======================== */
+// ========================================
+// THEME TOGGLE
+// ========================================
 function toggleTheme() {
     body.classList.toggle('dark-mode');
     themeToggle.textContent = body.classList.contains('dark-mode') ? '🌙' : '☀️';
     localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark-mode' : '');
 }
 
-// Temayı yükle
+// Load saved theme
 if (localStorage.getItem('theme') === 'dark-mode') {
     body.classList.add('dark-mode');
     themeToggle.textContent = '🌙';
@@ -205,9 +194,9 @@ if (localStorage.getItem('theme') === 'dark-mode') {
 }
 themeToggle.addEventListener('click', toggleTheme);
 
-/* ======================== */
-/* 2. SLIDER NAVİGASYON */
-/* ======================== */
+// ========================================
+// SLIDER NAVIGATION
+// ========================================
 const sectionIds = ['about-me', 'projects', 'contact'];
 
 function scrollSlider(direction) {
@@ -254,9 +243,9 @@ function setupMainNavListeners() {
 
 sliderWrapper.addEventListener('scroll', updateActiveNav);
 
-/* ======================== */
-/* 3. ACCORDION MANTIK */
-/* ======================== */
+// ========================================
+// ACCORDION (About Section)
+// ========================================
 accordionHeaders.forEach(header => {
     header.addEventListener('click', () => {
         const item = header.closest('.accordion-item');
@@ -276,240 +265,312 @@ accordionHeaders.forEach(header => {
     });
 });
 
-/* ======================== */
-/* 4. OLD MODAL MANTIK (Kept for compatibility) */
-/* ======================== */
+// ========================================
+// PROJECT CARDS - CAROUSEL & EXPANSION
+// ========================================
 
+// Render all project cards dynamically
+function renderProjectCards() {
+    const container = document.getElementById('projects-container');
+    if (!container) return;
 
-function openModal(projectId) {
-    const project = projectData[projectId];
-    if (!project) return;
+    container.innerHTML = '';
 
-    modal.querySelector('.modal-title').textContent = project.title;
-    modal.querySelector('.modal-image img').src = project.image;
-    modal.querySelector('.modal-description p').textContent = project.description;
-
-    const techTags = modal.querySelector('.tech-tags');
-    techTags.innerHTML = '';
-    project.technologies.forEach(tech => {
-        const tag = document.createElement('span');
-        tag.className = 'tech-tag';
-        tag.textContent = tech;
-        techTags.appendChild(tag);
-    });
-
-    modal.querySelector('.github-link').href = project.github;
-    modal.querySelector('.demo-link').href = project.demo;
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', closeModal);
-
-/* ======================== */
-/* 5. NEW POPUP SYSTEM */
-/* ======================== */
-
-// Initialize popup elements after DOM loads
-document.addEventListener('DOMContentLoaded', () => {
-    projectPopup = document.getElementById('project-popup');
-    popupClose = document.getElementById('popup-close');
-    popupOverlay = projectPopup ? projectPopup.querySelector('.popup-overlay') : null;
-    popupTitle = document.getElementById('popup-title');
-    popupTabs = document.querySelectorAll('.popup-tab');
-    popupAccordionContainer = document.getElementById('popup-accordion-container');
-
-    megaMenuTitles = document.querySelectorAll('.mega-menu-title');
-    megaMenuItems = document.querySelectorAll('.mega-menu-items a');
-
-    setupPopupListeners();
-});
-
-function setupPopupListeners() {
-    if (!projectPopup || !popupClose) {
-        console.error('Popup elements not found!');
-        return;
-    }
-
-    // Mega Menu Title Click
-    megaMenuTitles.forEach(title => {
-        title.addEventListener('click', (e) => {
-            const projectId = e.currentTarget.getAttribute('data-project-id');
-            scrollToTarget('projects');
-            setTimeout(() => {
-                openProjectPopup(projectId);
-            }, 300);
-        });
-    });
-
-    // Mega Menu Items Click
-    megaMenuItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projectId = e.currentTarget.getAttribute('data-project-id');
-            const subProjectId = e.currentTarget.getAttribute('data-sub-project');
-
-            scrollToTarget('projects');
-            setTimeout(() => {
-                openProjectPopup(projectId, subProjectId);
-            }, 300);
-        });
-    });
-
-    // Project Cards Click
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const projectId = card.getAttribute('data-project');
-            openProjectPopup(projectId);
-        });
-    });
-
-    // Close Popup
-    popupClose.addEventListener('click', closeProjectPopup);
-    popupOverlay.addEventListener('click', closeProjectPopup);
-
-    // Tab Switch
-    popupTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const tabId = tab.getAttribute('data-tab');
-            openProjectPopup(tabId);
-        });
+    Object.entries(projectData).forEach(([projectId, project]) => {
+        const card = createProjectCard(projectId, project);
+        container.appendChild(card);
     });
 }
 
-// Open Project Popup
-function openProjectPopup(projectId, autoExpandSubProject = null) {
-    if (!projectData[projectId] || !projectPopup) return;
+// Create individual project card with carousel
+function createProjectCard(projectId, project) {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.setAttribute('data-project', projectId);
 
-    const project = projectData[projectId];
-
-    popupTitle.textContent = project.title;
-
-    popupTabs.forEach(tab => {
-        if (tab.getAttribute('data-tab') === projectId) {
-            tab.classList.add('active');
-        } else {
-            tab.classList.remove('active');
-        }
-    });
-
-    loadPopupAccordion(projectId, autoExpandSubProject);
-
-    projectPopup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-// Load Accordion Content
-function loadPopupAccordion(projectId, autoExpandSubProject = null) {
-    const project = projectData[projectId];
-    if (!project || !project.subProjects) return;
-
-    popupAccordionContainer.innerHTML = '';
-
-    Object.entries(project.subProjects).forEach(([subId, subProject]) => {
-        const accordionItem = document.createElement('div');
-        accordionItem.className = 'popup-accordion-item';
-        if (autoExpandSubProject === subId) {
-            accordionItem.classList.add('active');
-        }
-
-        const header = document.createElement('button');
-        header.className = 'popup-accordion-header';
-        header.innerHTML = `
-            <h3>${subProject.name}</h3>
-            <span class="popup-accordion-icon">▸</span>
-        `;
-
-        const content = document.createElement('div');
-        content.className = 'popup-accordion-content';
-
-        let contentHTML = '';
-
-        if (subProject.video) {
-            const isVideo = subProject.video.endsWith('.mp4') || subProject.video.endsWith('.webm');
-            contentHTML += `
-                <div class="popup-media">
-                    ${isVideo
-                        ? `<video src="${subProject.video}" autoplay loop muted playsinline></video>`
-                        : `<img src="${subProject.video}" alt="${subProject.name}" />`
-                    }
-                </div>
-            `;
-        }
-
-        contentHTML += `<p class="popup-description">${subProject.description}</p>`;
-
-        if (subProject.tech && subProject.tech.length > 0) {
-            contentHTML += '<div class="popup-tech-tags">';
-            subProject.tech.forEach(tech => {
-                contentHTML += `<span class="popup-tech-tag">${tech}</span>`;
-            });
-            contentHTML += '</div>';
-        }
-
-        contentHTML += '<div class="popup-links">';
-        if (subProject.github) {
-            contentHTML += `<a href="${subProject.github}" target="_blank" class="popup-link">GitHub</a>`;
-        }
-        if (subProject.package) {
-            contentHTML += `<a href="${subProject.package}" target="_blank" class="popup-link secondary">📦 Package</a>`;
-        }
-        if (subProject.demo) {
-            contentHTML += `<a href="${subProject.demo}" target="_blank" class="popup-link secondary">Live Demo</a>`;
-        }
-        if (subProject.readme) {
-            contentHTML += `<a href="${subProject.readme}" target="_blank" class="popup-link secondary">📖 README</a>`;
-        }
-        contentHTML += '</div>';
-
-        content.innerHTML = contentHTML;
-
-        header.addEventListener('click', () => {
-            const isActive = accordionItem.classList.contains('active');
-
-            document.querySelectorAll('.popup-accordion-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            if (!isActive) {
-                accordionItem.classList.add('active');
+    // Collect all sub-project media
+    const mediaItems = [];
+    if (project.subProjects) {
+        Object.entries(project.subProjects).forEach(([subId, subProject]) => {
+            if (subProject.video) {
+                mediaItems.push({
+                    id: subId,
+                    url: subProject.video,
+                    name: subProject.name
+                });
             }
         });
+    }
 
-        accordionItem.appendChild(header);
-        accordionItem.appendChild(content);
-        popupAccordionContainer.appendChild(accordionItem);
+    // Create carousel HTML
+    let carouselHTML = '';
+    if (mediaItems.length > 0) {
+        carouselHTML = `
+            <div class="project-carousel">
+                <div class="carousel-container">
+                    ${mediaItems.map((item, index) => {
+                        const isVideo = item.url.endsWith('.mp4') || item.url.endsWith('.webm');
+                        return `
+                            <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-sub-id="${item.id}">
+                                ${isVideo
+                                    ? `<video src="${item.url}" muted loop playsinline></video>`
+                                    : `<img src="${item.url}" alt="${item.name}" />`
+                                }
+                                <div class="carousel-caption">${item.name}</div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+                ${mediaItems.length > 1 ? `
+                    <button class="carousel-prev">‹</button>
+                    <button class="carousel-next">›</button>
+                    <div class="carousel-indicators">
+                        ${mediaItems.map((_, index) =>
+                            `<span class="indicator ${index === 0 ? 'active' : ''}" data-index="${index}"></span>`
+                        ).join('')}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    card.innerHTML = `
+        ${carouselHTML}
+        <div class="project-card-content">
+            <h3 class="project-name">${project.title}</h3>
+            <p class="project-description">${project.description}</p>
+            <div class="project-tech-tags">
+                ${project.technologies.map(tech =>
+                    `<span class="tech-tag-mini">${tech}</span>`
+                ).join('')}
+            </div>
+            <div class="project-meta">
+                <span class="sub-count">${Object.keys(project.subProjects || {}).length} Projects</span>
+                <span class="expand-hint">Click to expand ↓</span>
+            </div>
+        </div>
+    `;
+
+    // Setup carousel controls
+    setupCarousel(card);
+
+    // Card click to expand
+    card.addEventListener('click', (e) => {
+        // Don't expand if clicking carousel controls
+        if (e.target.closest('.carousel-prev, .carousel-next, .indicator')) {
+            return;
+        }
+        toggleProjectExpansion(projectId, card);
+    });
+
+    return card;
+}
+
+// Setup carousel functionality
+function setupCarousel(card) {
+    const slides = card.querySelectorAll('.carousel-slide');
+    const prevBtn = card.querySelector('.carousel-prev');
+    const nextBtn = card.querySelector('.carousel-next');
+    const indicators = card.querySelectorAll('.indicator');
+
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    let autoplayInterval;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            const video = slide.querySelector('video');
+            if (video) {
+                if (i === index) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            }
+        });
+        indicators.forEach((ind, i) => {
+            ind.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+    }
+
+    function nextSlide() {
+        showSlide((currentIndex + 1) % slides.length);
+    }
+
+    function prevSlide() {
+        showSlide((currentIndex - 1 + slides.length) % slides.length);
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevSlide();
+            resetAutoplay();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextSlide();
+            resetAutoplay();
+        });
+    }
+
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showSlide(index);
+            resetAutoplay();
+        });
+    });
+
+    // Auto-play
+    function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 3000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        startAutoplay();
+    }
+
+    // Start autoplay and play first video
+    startAutoplay();
+    const firstVideo = slides[0].querySelector('video');
+    if (firstVideo) {
+        firstVideo.play().catch(() => {});
+    }
+
+    // Pause on hover
+    card.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+
+    card.addEventListener('mouseleave', () => {
+        startAutoplay();
     });
 }
 
-// Close Popup
-function closeProjectPopup() {
-    if (!projectPopup) return;
-    projectPopup.classList.remove('active');
-    document.body.style.overflow = '';
+// Toggle project expansion
+function toggleProjectExpansion(projectId, card) {
+    const container = document.getElementById('projects-container');
+    const isExpanded = card.classList.contains('expanded');
+
+    // Close all other expanded cards
+    document.querySelectorAll('.project-card.expanded').forEach(c => {
+        if (c !== card) {
+            c.classList.remove('expanded');
+            const details = c.querySelector('.project-details');
+            if (details) details.remove();
+        }
+    });
+
+    if (isExpanded) {
+        card.classList.remove('expanded');
+        const details = card.querySelector('.project-details');
+        if (details) details.remove();
+
+        // Remove details view mode
+        container.classList.remove('details-view');
+    } else {
+        card.classList.add('expanded');
+        const details = createProjectDetails(projectId);
+        card.appendChild(details);
+
+        // Enable details view mode (hide other cards)
+        container.classList.add('details-view');
+
+        // Scroll to top
+        setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+}
+// Create expanded project details
+function createProjectDetails(projectId) {
+    const project = projectData[projectId];
+    const details = document.createElement('div');
+    details.className = 'project-details';
+
+    let subProjectsHTML = '';
+    if (project.subProjects) {
+        Object.entries(project.subProjects).forEach(([subId, subProject]) => {
+            const isVideo = subProject.video && (subProject.video.endsWith('.mp4') || subProject.video.endsWith('.webm'));
+
+            subProjectsHTML += `
+                <div class="sub-project-item">
+                    ${subProject.video ? `
+                        <div class="sub-project-media">
+                            ${isVideo
+                                ? `<video src="${subProject.video}" muted loop playsinline autoplay></video>`
+                                : `<img src="${subProject.video}" alt="${subProject.name}" />`
+                            }
+                        </div>
+                    ` : ''}
+                    <div class="sub-project-info">
+                        <h4>${subProject.name}</h4>
+                        <p>${subProject.description}</p>
+                        <div class="sub-tech-tags">
+                            ${subProject.tech.map(tech =>
+                                `<span class="tech-tag-small">${tech}</span>`
+                            ).join('')}
+                        </div>
+                        <div class="sub-project-links">
+                            ${subProject.github ? `<a href="${subProject.github}" target="_blank" class="sub-link"><i class="fab fa-github"></i> GitHub</a>` : ''}
+                            ${subProject.package ? `<a href="${subProject.package}" target="_blank" class="sub-link"><i class="fas fa-download"></i> Package</a>` : ''}
+                            ${subProject.demo ? `<a href="${subProject.demo}" target="_blank" class="sub-link"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                            ${subProject.readme ? `<a href="${subProject.readme}" target="_blank" class="sub-link"><i class="fas fa-book"></i> README</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    details.innerHTML = `
+        <button class="back-to-projects">
+            <i class="fas fa-arrow-left"></i>
+            Back to Projects
+        </button>
+        <div class="details-header">
+            <h3>All Projects in ${project.title}</h3>
+            <button class="details-close">✕</button>
+        </div>
+        <div class="sub-projects-grid">
+            <div class="sub-projects-wrapper">
+                ${subProjectsHTML}
+            </div>
+        </div>
+    `;
+
+        // Back button
+    const backBtn = details.querySelector('.back-to-projects');
+    backBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = details.closest('.project-card');
+        toggleProjectExpansion(projectId, card);
+    });
+
+    // Close button
+    const closeBtn = details.querySelector('.details-close');
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = details.closest('.project-card');
+        toggleProjectExpansion(projectId, card);
+    });
+
+
+
+    return details;
 }
 
-// ESC key to close
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        if (projectPopup && projectPopup.classList.contains('active')) {
-            closeProjectPopup();
-        } else if (modal.classList.contains('active')) {
-            closeModal();
-        }
-    }
-});
-
-/* ======================== */
-/* 6. INITIALIZE */
-/* ======================== */
+// ========================================
+// INITIALIZE
+// ========================================
 setupMainNavListeners();
-
-
+renderProjectCards();
 
