@@ -339,15 +339,6 @@ function createProjectCard(projectId, project) {
         <div class="project-card-content">
             <h3 class="project-name">${project.title}</h3>
             <p class="project-description">${project.description}</p>
-            <div class="project-tech-tags">
-                ${project.technologies.map(tech =>
-                    `<span class="tech-tag-mini">${tech}</span>`
-                ).join('')}
-            </div>
-            <div class="project-meta">
-                <span class="sub-count">${Object.keys(project.subProjects || {}).length} Projects</span>
-                <span class="expand-hint">Click to expand ↓</span>
-            </div>
         </div>
     `;
 
@@ -377,6 +368,26 @@ function setupCarousel(card) {
 
     let currentIndex = 0;
     let autoplayInterval;
+
+    // Intersection Observer for lazy loading
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const video = entry.target;
+                if (video.dataset.src) {
+                    video.src = video.dataset.src;
+                    video.load();
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    slides.forEach(slide => {
+        const video = slide.querySelector('video');
+        if (video && video.dataset.src) {
+            observer.observe(video);
+        }
+    });
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -458,6 +469,7 @@ function setupCarousel(card) {
 // Toggle project expansion
 function toggleProjectExpansion(projectId, card) {
     const container = document.getElementById('projects-container');
+    const projectsArea = document.querySelector('.projects-area');
     const isExpanded = card.classList.contains('expanded');
 
     // Close all other expanded cards
@@ -476,20 +488,26 @@ function toggleProjectExpansion(projectId, card) {
 
         // Remove details view mode
         container.classList.remove('details-view');
+        projectsArea.classList.remove('details-active');
     } else {
         card.classList.add('expanded');
         const details = createProjectDetails(projectId);
         card.appendChild(details);
-
-        // Enable details view mode (hide other cards)
         container.classList.add('details-view');
+        projectsArea.classList.add('details-active');
 
-        // Scroll to top
-        setTimeout(() => {
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
+        // Improved scroll to card
+        requestAnimationFrame(() => {
+            const cardTop = card.getBoundingClientRect().top + window.scrollY;
+            const headerHeight = 70;
+            window.scrollTo({
+                top: cardTop - headerHeight - 20,
+                behavior: 'smooth'
+            });
+        });
     }
 }
+
 // Create expanded project details
 function createProjectDetails(projectId) {
     const project = projectData[projectId];
@@ -532,38 +550,12 @@ function createProjectDetails(projectId) {
     }
 
     details.innerHTML = `
-        <button class="back-to-projects">
-            <i class="fas fa-arrow-left"></i>
-            Back to Projects
-        </button>
-        <div class="details-header">
-            <h3>All Projects in ${project.title}</h3>
-            <button class="details-close">✕</button>
-        </div>
         <div class="sub-projects-grid">
             <div class="sub-projects-wrapper">
                 ${subProjectsHTML}
             </div>
         </div>
     `;
-
-        // Back button
-    const backBtn = details.querySelector('.back-to-projects');
-    backBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const card = details.closest('.project-card');
-        toggleProjectExpansion(projectId, card);
-    });
-
-    // Close button
-    const closeBtn = details.querySelector('.details-close');
-    closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const card = details.closest('.project-card');
-        toggleProjectExpansion(projectId, card);
-    });
-
-
 
     return details;
 }
@@ -573,4 +565,3 @@ function createProjectDetails(projectId) {
 // ========================================
 setupMainNavListeners();
 renderProjectCards();
-
