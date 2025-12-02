@@ -154,24 +154,6 @@ const projectData = {
                 video: 'https://raw.githubusercontent.com/rengincelik/Mini-Dev-Kit/main/Mini%20Dev%20Kit%202D/Recordings/SpriteDatabaseAnimation.mp4'
             }
         }
-    },
-    'games': {
-        title: 'Games',
-        image: '',
-        description: 'Published game projects',
-        technologies: ['Unity', 'Mobile', 'UI/UX'],
-        github: 'https://github.com/rengincelik/CoFu',
-        demo: 'https://rengincelik.itch.io',
-        subProjects: {
-            'cofu': {
-                name: 'Cofu',
-                description: 'Unity ile geliştirilmiş, mobil platformlar için optimize edilmiş bir bulmaca oyunu. Projede temiz kod yapısı (MVC), etkileşimli UI ve akıcı geçişler üzerine odaklanılmıştır.',
-                tech: ['Unity', 'Mobile', 'UI/UX', 'Puzzle Mechanics'],
-                github: 'https://github.com/rengincelik/CoFu',
-                demo: 'https://rengincelik.itch.io/cofu',
-                video: ''
-            }
-        }
     }
 };
 
